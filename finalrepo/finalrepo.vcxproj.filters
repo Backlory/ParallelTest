@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Test01_OpenMP.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Test02_CUDA.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Test03_SobelSerial.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Test04_SobelOmp.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Test05_SobelCUDA.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Test06_SobelMPI.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Test07_SobelMPIOmp.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Test03_SobelSerial_OpenCV.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Test04_SobelOmp_OpenCV.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h" />
+    <ClInclude Include="imgutils.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel.cuh">
+      <Filter>submodules</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="utils">
+      <UniqueIdentifier>{b9ef255a-e5a1-4f5e-bcc9-50ebc6fdfbf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules">
+      <UniqueIdentifier>{6709abfd-7b2f-4fea-a2ef-088945b7f8f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="submodules">
+      <UniqueIdentifier>{b22f757f-ced1-4312-9d1d-aeb7c50ebbba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="kernel.cu">
+      <Filter>submodules</Filter>
+    </CudaCompile>
+  </ItemGroup>
+</Project>

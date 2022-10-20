@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4A4A7533-B8DE-4086-B24B-C8814434FCDB}</ProjectGuid>
+    <RootNamespace>finalrepo</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.3.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\temp\$(Platform)\$(Configuration)\</IntDir>
+    <ExternalIncludePath>F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\FreeImage\include;F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\OpenCV4\include;F:\CPPprojs\221003-finalrepo\finalrepo\finalrepo;$(ExternalIncludePath)</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\temp\$(Platform)\$(Configuration)\</IntDir>
+    <ExternalIncludePath>F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\FreeImage\include;F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\OpenCV4\include;F:\CPPprojs\221003-finalrepo\finalrepo\finalrepo;$(ExternalIncludePath)</ExternalIncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\FreeImage\include;F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\OpenCV4\include;F:\CPPprojs\221003-finalrepo\finalrepo\finalrepo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ConformanceMode>false</ConformanceMode>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;FreeImage.lib;opencv_world455d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\OpenCV4\x64\vc15\lib;F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\FreeImage\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CudaCompile>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\FreeImage\include;F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\OpenCV4\include;F:\CPPprojs\221003-finalrepo\finalrepo\finalrepo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ConformanceMode>false</ConformanceMode>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;FreeImage.lib;opencv_world455.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\OpenCV4\x64\vc15\lib;F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\FreeImage\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CudaCompile>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CudaCompile Include="kernel.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="imgutils.h" />
+    <ClInclude Include="kernel.cuh" />
+    <ClInclude Include="main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Test01_OpenMP.cpp" />
+    <ClCompile Include="Test02_CUDA.cpp" />
+    <ClCompile Include="Test03_SobelSerial.cpp" />
+    <ClCompile Include="Test03_SobelSerial_OpenCV.cpp" />
+    <ClCompile Include="Test04_SobelOmp.cpp" />
+    <ClCompile Include="Test05_SobelCUDA.cpp" />
+    <ClCompile Include="Test06_SobelMPI.cpp" />
+    <ClCompile Include="Test07_SobelMPIOmp.cpp" />
+    <ClCompile Include="Test04_SobelOmp_OpenCV.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.3.targets" />
+  </ImportGroup>
+</Project>
