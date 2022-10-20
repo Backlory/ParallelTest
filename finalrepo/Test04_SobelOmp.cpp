@@ -63,16 +63,18 @@ void sobel_filtering_04(FIBITMAP* imgIn, FIBITMAP* imgOut, bool Display)
     BYTE* dataIn = FreeImage_GetBits(imgIn);
 
     int actual_threads_num = 0;
+    double pixel_value_x = 0.0;
+    double pixel_value_y = 0.0;
+    double pixel_value = 0.0;
 #if defined(_MSC_VER)
-#pragma omp parallel for
+#pragma omp parallel for private(pixel_value_x, pixel_value_y, pixel_value)
 #else
-#pragma omp parallel for collapse(2)
+#pragma omp parallel for collapse(2) private(pixel_value_x, pixel_value_y, pixel_value)
 #endif
     for (int y = 1; y < height - 1; ++y) {
         for (int x = 1; x < width - 1; ++x) {
-            double pixel_value_x = 0.0;
-            double pixel_value_y = 0.0;
-            double pixel_value = 0.0;
+            pixel_value_x = 0.0;
+            pixel_value_y = 0.0;
             for (int j = -1; j <= 1; ++j) {
                 for (int i = -1; i <= 1; ++i) {
                     pixel_value_x += sobel_weight_x[j + 1][i + 1] * imgutils::to_gray(dataIn, x + i, y + j, pitch, chNum);
@@ -98,29 +100,19 @@ void sobel_filtering_04(FIBITMAP* imgIn, FIBITMAP* imgOut, bool Display)
 
     /* Initialization of imgOut */
     BYTE* dataOut = FreeImage_GetBits(imgOut);
-    //#if defined(_MSC_VER)
-    //#pragma omp parallel for
-    //#else
-    //#pragma omp parallel for collapse(2)
-    //#endif
-        //for (int y = 0; y < height; ++y) {
-        //	for (int x = 0; x < pitch; ++x) {
-        //		dataOut[y*pitch+x] = 0;
-        //	}
-        //}
     memset(dataOut, 0, height * pitch);
 
     /* Generation of imgOut after linear transformation */
+
 #if defined(_MSC_VER)
-#pragma omp parallel for
+#pragma omp parallel for private(pixel_value_x, pixel_value_y, pixel_value)
 #else
-#pragma omp parallel for collapse(2)
+#pragma omp parallel for collapse(2)  private(pixel_value_x, pixel_value_y, pixel_value)
 #endif
     for (int y = 1; y < height - 1; ++y) {
         for (int x = 1; x < width - 1; x++) {
-            double pixel_value_x = 0.0;
-            double pixel_value_y = 0.0;
-            double pixel_value = 0.0;
+            pixel_value_x = 0.0;
+            pixel_value_y = 0.0;
             for (int j = -1; j <= 1; ++j) {
                 for (int i = -1; i <= 1; ++i) {
                     pixel_value_x += sobel_weight_x[j + 1][i + 1] * imgutils::to_gray(dataIn, x + i, y + j, pitch, chNum);

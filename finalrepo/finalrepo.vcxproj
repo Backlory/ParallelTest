@@ -56,15 +56,16 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\FreeImage\include;F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\OpenCV4\include;F:\CPPprojs\221003-finalrepo\finalrepo\finalrepo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\3rdparty\FreeImage\include;..\3rdparty\OpenCV4\include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ConformanceMode>false</ConformanceMode>
       <OpenMPSupport>true</OpenMPSupport>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;FreeImage.lib;opencv_world455d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\OpenCV4\x64\vc15\lib;F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\FreeImage\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\3rdparty\OpenCV4\x64\vc15\lib;..\3rdparty\FreeImage\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
@@ -80,6 +81,7 @@
       <AdditionalIncludeDirectories>F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\FreeImage\include;F:\CPPprojs\221003-finalrepo\finalrepo\3rdparty\OpenCV4\include;F:\CPPprojs\221003-finalrepo\finalrepo\finalrepo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ConformanceMode>false</ConformanceMode>
       <OpenMPSupport>true</OpenMPSupport>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

@@ -48,17 +48,17 @@ void sobel_filtering_04_CV(cv::Mat& imgIn, cv::Mat& imgOut, bool Display)
 
     int actual_threads_num = 0;
 
+    double pixel_value_x = 0.0;
+    double pixel_value_y = 0.0;
+    double pixel_value = 0.0;
 //#pragma omp parallel for shared(sobel_weight_x, sobel_weight_y, imgIn) 
-//#pragma omp parallel for private(pixel_value_x, pixel_value_y, pixel_value)
-#pragma omp parallel for collapse(2)
+#pragma omp parallel for  collapse(2) private(pixel_value_x, pixel_value_y, pixel_value)
+//#pragma omp parallel for collapse(2)
     for (int y = 1; y < height - 1; ++y) {
         for (int x = 1; x < width - 1; ++x) {
-            //pixel_value_x = 0;
-            //pixel_value_y = 0;
+            pixel_value_x = 0;
+            pixel_value_y = 0;
 
-            double pixel_value_x = 0.0;
-            double pixel_value_y = 0.0;
-            double pixel_value = 0.0;
             for (int j = -1; j <= 1; ++j) {
                 for (int i = -1; i <= 1; ++i) {
                     pixel_value_x += sobel_weight_x.at<double>(j + 1, i + 1) * imgIn.at<uchar>(y + j, x + i);
@@ -72,9 +72,9 @@ void sobel_filtering_04_CV(cv::Mat& imgIn, cv::Mat& imgOut, bool Display)
             if (pixel_value < pixel_value_min) pixel_value_min = pixel_value;
             if (pixel_value > pixel_value_max) pixel_value_max = pixel_value;
             }
-        if (Display) printf("For - For - Hello World from thread = %d\n", omp_get_thread_num()); //只有最外层并行了
+        //if (Display) printf("For - For - Hello World from thread = %d\n", omp_get_thread_num()); //只有最外层并行了
         }
-    if (Display) printf("For - Hello World from thread = %d\n", omp_get_thread_num()); //只有最外层并行了
+        //if (Display) printf("For - Hello World from thread = %d\n", omp_get_thread_num()); //只有最外层并行了
 
     }
     if (Display) std::cout << "the minimum value: " << pixel_value_min << std::endl;
@@ -88,12 +88,11 @@ void sobel_filtering_04_CV(cv::Mat& imgIn, cv::Mat& imgOut, bool Display)
 
     /* Generation of imgOut after linear transformation */
 
-#pragma omp parallel for collapse(2)
+#pragma omp parallel for collapse(2) private(pixel_value_x, pixel_value_y, pixel_value)
     for (int y = 1; y < height - 1; ++y) {
         for (int x = 1; x < width - 1; x++) {
-            double pixel_value_x = 0.0;
-            double pixel_value_y = 0.0;
-            double pixel_value = 0.0;
+            pixel_value_x = 0;
+            pixel_value_y = 0;
             for (int j = -1; j <= 1; ++j) {
                 for (int i = -1; i <= 1; ++i) {
                     pixel_value_x += sobel_weight_x.at<double>(j + 1, i + 1) * imgIn.at<uchar>(y + j, x + i);

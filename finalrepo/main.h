@@ -5,7 +5,7 @@
 
 #include <cstdio>
 #include <iostream>
-
+#include <vector>
 #include <omp.h>
 #include <time.h>
 #include<stdlib.h>
